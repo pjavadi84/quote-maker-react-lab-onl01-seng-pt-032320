@@ -1,7 +1,9 @@
 import React from 'react';
 
-const QuoteCard = ({ quote, upvoteQuote, downvoteQuote, removeQuote }) =>
-  <div>
+const QuoteCard = ({ quote, upvoteQuote, downvoteQuote, removeQuote }) => {
+  console.log(downvoteQuote)
+  return (
+    <div>
     <div className="card card-inverse card-success card-primary mb-3 text-center">
       <div className="card-block">
         <blockquote className="card-blockquote">
@@ -36,6 +38,9 @@ const QuoteCard = ({ quote, upvoteQuote, downvoteQuote, removeQuote }) =>
         <div>Votes: { quote.votes }</div>
       </div>
     </div>
-  </div>;
+  </div>
+  )
+}
+  
 
 export default QuoteCard;
