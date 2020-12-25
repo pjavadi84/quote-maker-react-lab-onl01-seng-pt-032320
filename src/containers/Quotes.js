@@ -6,19 +6,11 @@ import { bindActionCreators } from 'redux';
 
 
 class Quotes extends Component {
+  
+  
   render() {
-    console.log(this.props)
-    const quoteList = this.props.quotes.map((quote,index) => {
-    
-      return <QuoteCard quote={quote} 
-                        key={index} 
-                        removeQuote = { removeQuote}
-                        upvoteQuote = {upvoteQuote }
-                        downvoteQuote = { downvoteQuote }
+    const { quotes, removeQuote, upvoteQuote, downvoteQuote } = this.props;
 
-               />
-
-    })
     
     return (
       <div>
@@ -30,13 +22,7 @@ class Quotes extends Component {
         <div className="container">
           <div className="row">
             <div className="col-md-4">
-              {/*
-                TODO:
-
-                Render Quotes With QuoteCard component and pass down callback props for removing, upvoting and downvoting quotes
-                
-               */}
-               { quoteList }
+              { quotes.map(quote => <QuoteCard key={quote.id} upvoteQuote={upvoteQuote} downvoteQuote={downvoteQuote} removeQuote={removeQuote} quote={quote}/>)}
             </div>
           </div>
         </div>
@@ -46,7 +32,6 @@ class Quotes extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.quotes);
   return {
     quotes: state.quotes
   }
